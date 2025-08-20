@@ -1,0 +1,44 @@
+{
+  "name": "ccoptimizer",
+  "version": "0.1.0",
+  "description": "🚀 Optimize your Claude Code experience by analyzing your conversation patterns",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "ccoptimizer": "index.js"
+  },
+  "files": [
+    "index.js",
+    "analyzer.js",
+    "generator.js"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "optimizer",
+    "productivity",
+    "claude-md",
+    "cli"
+  ],
+  "author": "Erik Nymo Bohne",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASTAR-CLOUD/ccoptimizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ASTAR-CLOUD/ccoptimizer/issues"
+  },
+  "homepage": "https://github.com/ASTAR-CLOUD/ccoptimizer#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "ora": "^8.1.0"
+  }
+}
