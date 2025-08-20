@@ -129,11 +129,9 @@ async function analyzeWithClaude(conversation) {
   // Extract only USER messages to reduce tokens
   const userMessages = conversation.messages
     .filter(m => m.role === 'user')
-    .slice(0, 5) // Only first 5 messages
     .map(m => {
       if (typeof m.content === 'string') {
-        // Truncate to 200 chars max
-        return m.content.length > 200 ? m.content.substring(0, 200) + '...' : m.content;
+        return m.content.length > 500 ? m.content.substring(0, 500) + '...' : m.content;
       }
       return '';
     })
@@ -144,16 +142,27 @@ async function analyzeWithClaude(conversation) {
     return null;
   }
   
-  const prompt = `Analyze these user messages and write 3-5 concise rules for CLAUDE.md:
+  const prompt = `
+<task>
+Analyze these user messages to catch the essence of how the user communicates and what they want.
+The goal is to distill their preferences into clear guidelines for interaction.
+</task>
+
+<user_messages>
 ${userMessages}
+</user_messages>
 
+<instructions>
 Focus on their communication style, technical preferences, and what frustrates them.
-Write as short directives like:
-- Keep responses brief
-- Never add code comments
-- Use existing files instead of creating new ones`;
+</instructions>
 
-  // Skip AI analysis in dry-run mode
+<examples>
+- Always ultrathink to maximize conciseness
+- Never add code comments about changes you made
+- Strive to solve the problem without writing more lines
+- When user swears, we need to take a step back and reassess the situation
+</examples>`
+
   if (process.argv.includes('--dry-run')) {
     return "- Prefers brief responses\n- No code comments\n- Values simplicity";
   }

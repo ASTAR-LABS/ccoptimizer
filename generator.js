@@ -2,29 +2,40 @@ import { spawn } from 'child_process';
 
 export async function generateClaudeMd(insights) {
   // Super simple - just pass all insights to Claude and ask for final CLAUDE.md
-  const prompt = `Consolidate these rules from multiple conversations into a clean CLAUDE.md file:
+  const prompt = `
+<task>
+Consolidate these user preferences from multiple conversations into a clean CLAUDE.md file.
+The goal is to create clear, actionable instructions that will guide future Claude interactions.
+</task>
 
+<user_preferences>
 ${insights}
+</user_preferences>
 
+<instructions>
 Create a well-structured CLAUDE.md with:
-- Clear section headings
+- Clear section headings (Communication Style, Code Preferences, Task Execution, etc.)
 - Short, declarative bullet points
-- No redundancy
-- Focus on actionable directives
+- No redundancy between rules
+- Focus on actionable directives that directly impact Claude's behavior
+Output ONLY the final CLAUDE.md content, no meta-commentary.
+</instructions>
 
-Output ONLY the final CLAUDE.md content, starting with "# Optimized Claude Instructions".
-No explanations, no meta-commentary, just the clean instructions.
-
-Example format:
-# Optimized Claude Instructions
-
+<examples>
 ## Communication Style
-- Keep responses brief and direct
-- Skip unnecessary explanations
+- Keep responses extremely brief and direct
+- Skip preambles, explanations, and summaries
+- Match user's casual tone when appropriate
 
-## Code Preferences  
+## Code Preferences
 - Never add code comments
-- Use existing files over creating new ones`;
+- Edit existing files instead of creating new ones
+- Follow existing patterns and conventions in the codebase
+
+## Task Execution
+- Do exactly what's asked, nothing more
+- Never create documentation files unless explicitly requested
+</examples>`;
 
   try {
     const content = await new Promise((resolve) => {

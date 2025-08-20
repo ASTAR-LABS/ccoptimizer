@@ -1,6 +1,6 @@
 {
   "name": "ccoptimizer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "🚀 Optimize your Claude Code experience by analyzing your conversation patterns",
   "main": "index.js",
   "type": "module",
@@ -28,12 +28,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ASTAR-CLOUD/ccoptimizer.git"
+    "url": "git+https://github.com/ASTAR-LABS/ccoptimizer.git"
   },
   "bugs": {
-    "url": "https://github.com/ASTAR-CLOUD/ccoptimizer/issues"
+    "url": "https://github.com/ASTAR-LABS/ccoptimizer/issues"
   },
-  "homepage": "https://github.com/ASTAR-CLOUD/ccoptimizer#readme",
+  "homepage": "https://github.com/ASTAR-LABS/ccoptimizer#readme",
   "engines": {
     "node": ">=18.0.0"
   },
